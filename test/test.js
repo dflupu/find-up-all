@@ -5,7 +5,7 @@ const m = require('..');
 test('finds file in cwd - async', t => {
 	const cwd = 'test/fixtures/1/2';
 
-	return m('a', {cwd, limitDir: cwd}).then(results => {
+	return m('a', {cwd, end: cwd}).then(results => {
 		const actual = results.map(p => path.relative(cwd, p));
 		const expected = ['a'];
 
@@ -15,7 +15,7 @@ test('finds file in cwd - async', t => {
 
 test('finds file above cwd - async', t => {
 	const cwd = 'test/fixtures/1/2';
-	return m('a', {cwd, limitDir: 'test/fixtures'}).then(results => {
+	return m('a', {cwd, end: 'test/fixtures'}).then(results => {
 		const actual = results.map(p => path.relative(cwd, p));
 		const expected = ['a', '../a', '../../a'];
 
@@ -25,7 +25,7 @@ test('finds file above cwd - async', t => {
 
 test('finds file in cwd - sync', t => {
 	const cwd = 'test/fixtures/1/2';
-	const actual = m.sync('a', {cwd, limitDir: cwd})
+	const actual = m.sync('a', {cwd, end: cwd})
 		.map(p => path.relative(cwd, p));
 
 	const expected = ['a'];
@@ -34,7 +34,7 @@ test('finds file in cwd - sync', t => {
 
 test('finds file above cwd - sync', t => {
 	const cwd = 'test/fixtures/1/2';
-	const actual = m.sync('a', {cwd, limitDir: 'test/fixtures'})
+	const actual = m.sync('a', {cwd, end: 'test/fixtures'})
 		.map(p => path.relative(cwd, p));
 
 	const expected = ['a', '../a', '../../a'];
@@ -43,7 +43,7 @@ test('finds file above cwd - sync', t => {
 
 test('finds directories', t => {
 	const cwd = 'test/fixtures/1/2';
-	const actual = m.sync('1', {cwd, limitDir: 'test/fixtures'})
+	const actual = m.sync('1', {cwd, end: 'test/fixtures'})
 		.map(p => path.relative(cwd, p));
 
 	const expected = ['..'];

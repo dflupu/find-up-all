@@ -3,7 +3,7 @@ const pathExists = require('path-exists');
 
 module.exports = (filename, options) => {
 	const cwd = path.resolve(options.cwd || '');
-	const limitDir = options.limitDir ? path.resolve(options.limitDir) : null;
+	const end = options.end ? path.resolve(options.end) : null;
 
 	const results = [];
 
@@ -16,10 +16,10 @@ module.exports = (filename, options) => {
 				}
 
 				const parentDir = path.dirname(currentDir);
-				const reachedlimitDir = limitDir && (currentDir === limitDir);
+				const reachedEnd = end && (currentDir === end);
 				const reachedFsRoot = (parentDir === currentDir);
 
-				if (reachedFsRoot || reachedlimitDir) {
+				if (reachedFsRoot || reachedEnd) {
 					resolve(results);
 				} else {
 					find(parentDir);
@@ -31,15 +31,15 @@ module.exports = (filename, options) => {
 
 module.exports.sync = (filename, options) => {
 	const cwd = path.resolve(options.cwd || '');
-	const limitDir = options.limitDir ? path.resolve(options.limitDir) : null;
+	const end = options.end ? path.resolve(options.end) : null;
 
 	let currentDir = cwd;
 	let reachedFsRoot = false;
-	let reachedlimitDir = false;
+	let reachedEnd = false;
 
 	const results = [];
 
-	while (!(reachedFsRoot || reachedlimitDir)) {
+	while (!(reachedFsRoot || reachedEnd)) {
 		const fp = path.join(currentDir, filename);
 		if (pathExists.sync(fp)) {
 			results.push(fp);
@@ -47,7 +47,7 @@ module.exports.sync = (filename, options) => {
 
 		const parentDir = path.dirname(currentDir);
 
-		reachedlimitDir = limitDir && (currentDir === limitDir);
+		reachedEnd = end && (currentDir === end);
 		reachedFsRoot = (parentDir === currentDir);
 		currentDir = parentDir;
 	}
