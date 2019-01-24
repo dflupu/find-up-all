@@ -1,0 +1,25 @@
+{
+  "name": "find-up-all",
+  "version": "1.0.0",
+  "description": "Find all instances of a file or folder in parent directories",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && nyc ava"
+  },
+  "author": "Daniel Lupu <dflupu@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^1.1.0",
+    "codecov": "^3.1.0",
+    "nyc": "^13.1.0",
+    "xo": "^0.24.0"
+  },
+  "dependencies": {
+    "path-exists": "^3.0.0"
+  },
+  "xo": {
+    "rules": {
+      "ava/prefer-async-await": 0
+    }
+  }
+}
