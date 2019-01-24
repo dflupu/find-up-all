@@ -1,6 +1,6 @@
 {
   "name": "find-up-all",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Find all instances of a file or folder in parent directories",
   "main": "index.js",
   "scripts": {
@@ -21,5 +21,19 @@
     "rules": {
       "ava/prefer-async-await": 0
     }
-  }
+  },
+  "keywords": [
+    "find",
+    "find-up",
+    "look-up",
+    "search",
+    "parent",
+    "parents",
+    "folder",
+    "directory",
+    "dir",
+    "walk",
+    "walking",
+    "path"
+  ]
 }

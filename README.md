@@ -1,4 +1,4 @@
-# find-up-all ![Build Status](https://travis-ci.com/dflupu/find-up-all.svg?branch=master)](https://travis-ci.com/dflupu/find-up-all)
+# find-up-all [![Build Status](https://travis-ci.com/dflupu/find-up-all.svg?branch=master)](https://travis-ci.com/dflupu/find-up-all)
 
 ## Install
 
